@@ -1,10 +1,7 @@
-  import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
-        import java.awt.Graphics2D;
-        import java.awt.geom.Rectangle2D;
-        import java.util.logging.Level;
-        import java.util.logging.Logger;
-
-
+/**
+ *
+ * @author niksh
+ */
 public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает окошко в винде
     static Maze maze;
 
@@ -57,7 +54,7 @@ public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает 
 //MouseListene - чтобы обработать события от мыши.
 //Нужен нам для определения координат этого курсора в начале перемещения.
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-// mouseClicked - выполнен щелчок мышкой на наблюдаемом объекте(Если позиция курсора не меняется между зажатием и отпусканием кнопки,
+// mouseClicked - событие от щелчка кнопкой мыши(Если позиция курсора не меняется между зажатием и отпусканием кнопки,
 // то mouseClicked срабатывает, если же зажали кнопку,
 // сменили положение курсора — передвинули его куда-нибудь,
 // но не убрали с компонента а затем отпустили, то mouseClicked не вызовется)
@@ -69,7 +66,7 @@ public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает 
             }
         });
         canvas1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
- //MouseMotionListener - помогает отслеживать изменение координат курсора мыши при выполнении операции перемещения дискеты
+            //MouseMotionListener - помогает отслеживать изменение координат курсора мыши при выполнении операции перемещения дискеты
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 canvas1MouseDragged(evt);//Операция переноса объектов: пользователь нажимает клавишу мыши,
                 // перемещает курсор и затем отпускает клавишу мыши
@@ -138,7 +135,7 @@ public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает 
 
         jSpinner3.setValue(100);
         jSpinner3.addChangeListener(new javax.swing.event.ChangeListener() {
-// Для этого чтобы получать извещения об изменении значения регулятора(при выборе ширины например)
+            // Для этого чтобы получать извещения об изменении значения регулятора(при выборе ширины например)
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSpinner3StateChanged(evt);
             }
@@ -161,46 +158,36 @@ public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает 
         });
 
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());//создаем окно
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(//создаем горизонтальную группу
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING) //соответствует выравниванию по левому
-                        // краю в измерении по горизонтали. Также отметьте, что мы не определяем разрывы, предполагая,
-                        // что функция автовставки разрыва включается.
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()//создание группы объектов, выравнивание по ширине
-                                .addContainerGap()//добавляем разрыв(место от левого края)
-                                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                //добавили наш лабиринт с шириной 510 пикселей
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)//добавили следующую группу
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(60, 60, 60)//добавили разрыв
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()//разрыв от левого края
+                                .addComponent(canvas1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)//добавляем лабиринт
+                                .addGap(60)//разрыв между лабиринтом и кнопками
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel2)
-                                                .addGap(84, 84, 84))
+                                                .addComponent(jButton1)
+                                                .addComponent(jSpinner1)
+                                        )
 
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(37, 37, 37)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jButton1)
-                                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                .addComponent(jLabel3)
-                                                                .addComponent(jButton2)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jButton3)
-                                                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(0, 66, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGap(99, 99, 99)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jSpinner3)
+                                                .addComponent(jLabel3)
+                                                .addComponent(jButton2)
                                                 .addComponent(jButton4)
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                )
+
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jSpinner2)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jButton3)
+                                )
+
+                        )
         );
-        layout.setVerticalGroup( //разграничения вертикальное (сверху вниз)
+        layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,34 +219,38 @@ public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //метод обработки нажатия на jButton1
+
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         maze.paint();
     }//GEN-LAST:event_jButton1MouseClicked
 
-    //метод изменения значений на  jSpinner1
-    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
 
+    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+        // TODO add your handling code here:
+        maze.set_height((int) this.jSpinner1.getValue());
     }//GEN-LAST:event_jSpinner1StateChanged
 
-    //метод изменения значений на  jSpinner2
-    private void jSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner2StateChanged
 
+    private void jSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner2StateChanged
+        // TODO add your handling code here:
+        maze.set_width((int) this.jSpinner2.getValue());
     }//GEN-LAST:event_jSpinner2StateChanged
 
 
     private void canvas1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvas1MouseMoved
-
+        // TODO add your handling code here:
+        maze.on_mouse_dragged(evt.getX(),evt.getY());
     }//GEN-LAST:event_canvas1MouseMoved
 
 
     private void canvas1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvas1MouseDragged
-
+        //canv.draw_rect(evt.getX(),evt.getY());
     }//GEN-LAST:event_canvas1MouseDragged
 
 
     private void canvas1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvas1MouseClicked
-
+        // TODO add your handling code here:
+        //maze.on_mouse_clicked(evt.getX(),evt.getY());
     }//GEN-LAST:event_canvas1MouseClicked
 
 
@@ -267,14 +258,17 @@ public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    //метод обработки нажатия на jButton2
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        maze.go_maze();
+        this.jButton3.setEnabled(true);
+        this.jButton2.setEnabled(false);
     }//GEN-LAST:event_jButton2MouseClicked
 
 
     private void canvas1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_canvas1MouseReleased
-
+        // TODO add your handling code here:
+        maze.on_mouse_clicked(evt.getX(),evt.getY());
     }//GEN-LAST:event_canvas1MouseReleased
 
 
@@ -282,37 +276,49 @@ public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает 
         // TODO add your handling code here:
 
 
-    }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    //метод обработки нажатия на jButton3
+
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-
-    }
-
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {
-    }
-
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {
-    }
-
-    //метод изменения значений на  jSpinner1
-    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {
-        //maze.set_delay((int) this.jSpinner3.getValue());
-    }
+        // TODO add your handling code here:
+        maze.clear();
+        this.jButton2.setEnabled(true);
+        this.jButton3.setEnabled(false);
+    }//GEN-LAST:event_jButton3MouseClicked
 
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-    }
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 
-    //метод обработки нажатия на jButton4
+
+    }//GEN-LAST:event_formWindowActivated
+
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+
+    }//GEN-LAST:event_formWindowOpened
+
+
+    private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
+        // TODO add your handling code here:
+        maze.set_delay((int) this.jSpinner3.getValue());
+    }//GEN-LAST:event_jSpinner3StateChanged
+
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-
+        // TODO add your handling code here:
+        maze.bad_rand_generarion();
     }//GEN-LAST:event_jButton4MouseClicked
 
 
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -339,10 +345,10 @@ public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает 
 
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {//запускает окно
-            public void run() {//делает окно видимым
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new NewJFrame().setVisible(true);
-            }//делает окно видимым
+            }
         });
     }
 
@@ -361,5 +367,3 @@ public class NewJFrame extends javax.swing.JFrame { //JFrame-описывает 
     private javax.swing.JSpinner jSpinner3;
     // End of variables declaration//GEN-END:variables
 }
-
-
